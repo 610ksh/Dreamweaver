@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 23259917748512100}
   - component: {fileID: 136303098487794048}
   - component: {fileID: 54960337951144310}
-  - component: {fileID: 114254818025403298}
+  - component: {fileID: 114250554552541570}
+  - component: {fileID: 114237789718186178}
   - component: {fileID: 114912714851819534}
   m_Layer: 0
   m_Name: Player
@@ -43,6 +44,7 @@ GameObject:
   - component: {fileID: 20290114479462066}
   - component: {fileID: 81297495265217564}
   - component: {fileID: 114456478505410424}
+  - component: {fileID: 114819933597120242}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -181,7 +183,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1819636250530968}
   m_Enabled: 1
---- !u!114 &114254818025403298
+--- !u!114 &114237789718186178
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,7 +191,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1471918002167238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f5150ac4fa54145ab73e793784dbbd, type: 3}
+  m_Script: {fileID: 11500000, guid: fd1c0b12c5164b745b7bfb9e3de8571a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axes: 1
+  sensHorizontal: 3
+  sensVertical: 3
+  minVert: -45
+  maxVert: 45
+--- !u!114 &114250554552541570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1471918002167238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a1f91f6a775a342887a87458d78cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
@@ -209,6 +227,22 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: 89d34c20dd4b73547b45ac990f10c073, type: 3}
   hotSpotIsCenter: 1
   adjustHotSpot: {x: 0, y: 0}
+--- !u!114 &114819933597120242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1819636250530968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1c0b12c5164b745b7bfb9e3de8571a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axes: 2
+  sensHorizontal: 3
+  sensVertical: 3
+  minVert: -45
+  maxVert: 45
 --- !u!114 &114912714851819534
 MonoBehaviour:
   m_ObjectHideFlags: 1

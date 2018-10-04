@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class R_Player_Raycast : MonoBehaviour
+public class R_Door_Raycasting : MonoBehaviour
 {
 
     public float rayDistance = 5.0f;

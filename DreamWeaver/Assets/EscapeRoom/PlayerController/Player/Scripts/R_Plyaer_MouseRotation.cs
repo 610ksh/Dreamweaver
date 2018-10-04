@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseRotation : MonoBehaviour
+public class R_Plyaer_MouseRotation : MonoBehaviour
 {
     // X축 회전, Y축 회전값을 열겨형으로 만듬
     public enum RotationAxis

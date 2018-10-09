@@ -5,10 +5,14 @@ using UnityEngine.UI;
 
 public class R_Password_ButtonEvent : MonoBehaviour
 {
-
-    public Text outputNum;
-    public GameObject keypad;
+    // 열라고 하는 문
+    // ※ 사용하려면 반드시 열라는 오브젝트를 넣어줘야합니다!!
     public GameObject door;
+    
+    // 숫자입력시 나타나는 텍스트창
+    public Text outputNum;
+    
+    // KeyPad 정답
     public string answer = "1234";
 
     // 숫자를 누르면 텍스트에 출력
@@ -34,9 +38,9 @@ public class R_Password_ButtonEvent : MonoBehaviour
             // 텍스트 초기화
             outputNum.text = "";
             // 패스워드 UI 비활성
-            keypad.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
-        // 비밀번호가 정답가 틀리다면 초기화
+        // 비밀번호가 정답과 틀리다면 초기화
         else
         {
             outputNum.text = "";

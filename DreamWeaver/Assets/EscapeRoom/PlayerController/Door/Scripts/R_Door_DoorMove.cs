@@ -50,7 +50,7 @@ public class R_Door_DoorMove : MonoBehaviour
             {
                 isMove = false;
                 //디버깅용. 무시해주세요 :D
-                Debug.Log(curTime);
+                //Debug.Log(curTime);
             }
         }
     }

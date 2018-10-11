@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - Door
   - PasswordDoor
+  - Floor
+  - Jumper
+  - Quiz
   layers:
   - Default
   - TransparentFX

@@ -51,4 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057d23e360323a74f874a65438b33b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Keypad: {fileID: 1230812281364376, guid: db0ef79aabdc83c4ea0bd3b084e34117, type: 2}
+  keypad: {fileID: 0}
+  quiz: {fileID: 0}
+  player: {fileID: 0}

@@ -45,7 +45,7 @@ public class P_Player_TempMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Floor"))
         {
             isJump = false;
             GetComponent<Animator>().SetBool("Jump", false);

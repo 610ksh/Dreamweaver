@@ -1,0 +1,222 @@
+fileFormatVersion: 2
+guid: 69b0483e9b930f2419bc0af67f91f56d
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: bookshelf
+    100002: Box011
+    100004: carpet
+    100006: clock
+    100008: Cylinder009
+    100010: door
+    100012: door 1
+    100014: door_frame
+    100016: floor_lamp
+    100018: floor_plane
+    100020: frame
+    100022: //RootNode
+    100024: Object032
+    100026: Object044
+    100028: Object045
+    100030: Object046
+    100032: Plane007
+    100034: radiator
+    100036: sofa1
+    100038: sofa2
+    100040: tv
+    100042: tv_stand
+    100044: wall
+    100046: wall_corner1
+    100048: wall_corner2
+    100050: wall_door
+    100052: wall_window
+    100054: window
+    400000: bookshelf
+    400002: Box011
+    400004: carpet
+    400006: clock
+    400008: Cylinder009
+    400010: door
+    400012: door 1
+    400014: door_frame
+    400016: floor_lamp
+    400018: floor_plane
+    400020: frame
+    400022: //RootNode
+    400024: Object032
+    400026: Object044
+    400028: Object045
+    400030: Object046
+    400032: Plane007
+    400034: radiator
+    400036: sofa1
+    400038: sofa2
+    400040: tv
+    400042: tv_stand
+    400044: wall
+    400046: wall_corner1
+    400048: wall_corner2
+    400050: wall_door
+    400052: wall_window
+    400054: window
+    2100000: 'Material #25'
+    2100002: 'Material #29'
+    2300000: bookshelf
+    2300002: Box011
+    2300004: carpet
+    2300006: clock
+    2300008: Cylinder009
+    2300010: door 1
+    2300012: door_frame
+    2300014: floor_lamp
+    2300016: floor_plane
+    2300018: frame
+    2300020: Object032
+    2300022: Object044
+    2300024: Object045
+    2300026: Object046
+    2300028: Plane007
+    2300030: radiator
+    2300032: sofa1
+    2300034: sofa2
+    2300036: tv
+    2300038: tv_stand
+    2300040: wall
+    2300042: wall_corner1
+    2300044: wall_corner2
+    2300046: wall_door
+    2300048: wall_window
+    2300050: window
+    3300000: bookshelf
+    3300002: Box011
+    3300004: carpet
+    3300006: clock
+    3300008: Cylinder009
+    3300010: door 1
+    3300012: door_frame
+    3300014: floor_lamp
+    3300016: floor_plane
+    3300018: frame
+    3300020: Object032
+    3300022: Object044
+    3300024: Object045
+    3300026: Object046
+    3300028: Plane007
+    3300030: radiator
+    3300032: sofa1
+    3300034: sofa2
+    3300036: tv
+    3300038: tv_stand
+    3300040: wall
+    3300042: wall_corner1
+    3300044: wall_corner2
+    3300046: wall_door
+    3300048: wall_window
+    3300050: window
+    4300000: floor_lamp
+    4300002: wall_corner2
+    4300004: radiator
+    4300006: Box011
+    4300008: carpet
+    4300010: tv_stand
+    4300012: tv
+    4300014: Cylinder009
+    4300016: clock
+    4300018: window
+    4300020: sofa2
+    4300022: sofa1
+    4300024: Object032
+    4300026: bookshelf
+    4300028: Object044
+    4300030: Object045
+    4300032: Object046
+    4300034: floor_plane
+    4300036: frame
+    4300038: Plane007
+    4300040: wall
+    4300042: wall_door
+    4300044: wall_window
+    4300046: wall_corner1
+    4300048: door_frame
+    4300050: door
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

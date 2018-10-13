@@ -6,11 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestScene.unity
+    path: Assets/MainStage/Scenes/MainStage.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/EscapeRoom/Scenes/EscapeRoomTestScene.unity
     guid: 788045d100de6f34aa7d6c2521a5a344
+  - enabled: 1
+    path: Assets/EscapeRoom/Scenes/EscapeRoom.unity
+    guid: 03ee239dc44407f459dcd4ba43788084
   - enabled: 1
     path: Assets/Platformer/Scenes/PlatformerTestScene.unity
     guid: ed53770e8ce21d94fa6348f3a036b7e8

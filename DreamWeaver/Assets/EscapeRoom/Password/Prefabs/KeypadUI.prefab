@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 224998004917361540}
   - component: {fileID: 114844097739121440}
   m_Layer: 5
-  m_Name: Keypad
+  m_Name: KeypadUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

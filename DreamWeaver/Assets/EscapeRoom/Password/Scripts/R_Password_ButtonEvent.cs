@@ -57,7 +57,7 @@ public class R_Password_ButtonEvent : MonoBehaviour
             transform.GetChild(11).GetComponent<AudioSource>().Play();
 
             // 정답이 맞다면 문 오브젝트의 문열림 함수호출
-            door.GetComponent<R_Door_DoorMove>().MoveSignal();
+            door.GetComponent<R_Door_DoorMove>().RotateSignal();
             // 텍스트 초기화
             outputNum.text = "";
             // 패스워드 UI 비활성

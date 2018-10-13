@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class R_Quiz_TypeWriterEffect : MonoBehaviour
 {
     //  변수
-	public float typingDelay=0.1f;
-    public float skipDelay=0.2f;
+    public float typingDelay = 0.1f;
+    public float skipDelay = 0.2f;
 
 
     // 전체 대화창의 내용 (문자배열)
@@ -14,7 +14,7 @@ public class R_Quiz_TypeWriterEffect : MonoBehaviour
 
     // 전체 대화창의 개수
     public int dialog_cnt;
-    
+
     // 현재 대화창 위치
     int cnt;
 
@@ -24,7 +24,7 @@ public class R_Quiz_TypeWriterEffect : MonoBehaviour
     // 현재 텍스트 타이핑 상태(full : 끝, cut : 딜레이 생략)
     bool text_full;
     bool text_cut;
-    
+
     // 최초 텍스트 시작호출
     public void Get_Typing()
     {
@@ -95,3 +95,20 @@ public class R_Quiz_TypeWriterEffect : MonoBehaviour
     }
 
 }
+
+
+    //// 퀴즈 내용 넘겨받기
+    //public void Write(string dialog, int cntOfText)
+    //{
+    //    if (fulltext == null)
+    //    {
+    //        fulltext = new string[cntOfText];
+    //        fulltext[dialog_cnt] = dialog;
+    //        ++dialog_cnt;
+    //    }
+    //    else
+    //    {
+    //        fulltext[dialog_cnt] = dialog;
+    //        ++dialog_cnt;
+    //    }
+    //}

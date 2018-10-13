@@ -6,10 +6,12 @@ TagManager:
   tags:
   - Ground
   - Door
-  - PasswordDoor
   - Floor
   - Jumper
   - Quiz
+  - Password
+  - Quiz2
+  - Light
   layers:
   - Default
   - TransparentFX

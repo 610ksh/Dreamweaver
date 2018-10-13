@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jumper : MonoBehaviour
+public class JumperCube : MonoBehaviour
 {
-    public float force = 50f;
+    public float force = 25f;
     public GameObject player;
 
     private void OnTriggerEnter(Collider c) //occur when player get in

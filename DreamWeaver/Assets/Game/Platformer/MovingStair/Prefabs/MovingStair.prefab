@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4008414754658328}
   m_Layer: 0
-  m_Name: MovingCube
+  m_Name: MovingStair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

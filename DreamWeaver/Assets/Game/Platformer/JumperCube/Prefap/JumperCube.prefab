@@ -25,10 +25,10 @@ GameObject:
   - component: {fileID: 65154096055296120}
   - component: {fileID: 54213949427260010}
   - component: {fileID: 95090134084104566}
-  - component: {fileID: 114400447221994394}
+  - component: {fileID: 114866505233272414}
   m_Layer: 0
-  m_Name: Jumper
-  m_TagString: Jumper
+  m_Name: JumperCube
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221528454003692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.88, y: 1.39, z: -3.02}
   m_LocalScale: {x: 1.8, y: 0.2, z: 1.8}
   m_Children: []
   m_Father: {fileID: 0}
@@ -145,7 +145,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114400447221994394
+--- !u!114 &114866505233272414
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,8 +153,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1221528454003692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 568113b53f03d4a4f99d0ab04780ccae, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c4f06c7a9dbdd9479a84afb7e92c98c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 8
-  player: {fileID: 0}
+  force: 25

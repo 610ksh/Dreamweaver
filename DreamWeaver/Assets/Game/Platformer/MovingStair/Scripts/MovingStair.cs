@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingCube : MonoBehaviour 
+public class MovingStair : MonoBehaviour 
 {
     //오브젝트의 zPositon값을 업데이트
     public float positionSpeed = 0.01f;

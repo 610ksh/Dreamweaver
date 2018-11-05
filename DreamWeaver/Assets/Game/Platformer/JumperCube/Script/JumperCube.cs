@@ -5,20 +5,14 @@ using UnityEngine;
 public class JumperCube : MonoBehaviour
 {
     public float force = 25f;
-    public GameObject player;
 
     private void OnTriggerEnter(Collider c) //occur when player get in
     {
         if (c.tag == "Player")
         {
-            Force();
+            c.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            c.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.Impulse);
         }
 
-    }
-
-    void Force()
-    {
-        player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        player.GetComponent<Rigidbody>().AddForce(new Vector3(0, 2, 0) * force, ForceMode.Impulse);
     }
 }

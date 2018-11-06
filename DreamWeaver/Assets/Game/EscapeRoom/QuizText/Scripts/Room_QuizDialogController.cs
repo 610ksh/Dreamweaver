@@ -1,19 +1,21 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class R_Quiz_TypeWriterEffect : MonoBehaviour
+public class Room_QuizDialogController : MonoBehaviour
 {
+
     //  변수
     public float typingDelay = 0.1f;
     public float skipDelay = 0.2f;
 
 
     // 전체 대화창의 내용 (문자배열)
-    public string[] fulltext;
+    string[] fulltext;
 
     // 전체 대화창의 개수
-    public int dialog_cnt;
+    int dialog_cnt;
 
     // 현재 대화창 위치
     int cnt;
@@ -25,6 +27,13 @@ public class R_Quiz_TypeWriterEffect : MonoBehaviour
     bool text_full;
     bool text_cut;
 
+    Text text;
+
+    private void Awake()
+    {
+        text = GetComponent<Text>();
+    }
+
     // 최초 텍스트 시작호출
     public void Get_Typing()
     {
@@ -32,6 +41,12 @@ public class R_Quiz_TypeWriterEffect : MonoBehaviour
         text_full = false;
         text_cut = false;
         cnt = 0;
+
+        // 퀴즈 내용 받아오기
+        fulltext = Room_QuizManager.Instance.GetDialog();
+
+        // 퀴즈 내용 개수 받아오기
+        dialog_cnt = fulltext.Length;
 
         //타이핑 코루틴시작
         StartCoroutine(ShowText(fulltext));
@@ -44,7 +59,7 @@ public class R_Quiz_TypeWriterEffect : MonoBehaviour
         {
             //text_exit = true;
             StopCoroutine("ShowText");
-            transform.parent.parent.GetComponent<R_Quiz_ButtonEvent>().EndEvent();
+            transform.parent.parent.GetComponent<Room_QuizController>().EndEvent();
         }
         else
         {
@@ -60,14 +75,13 @@ public class R_Quiz_TypeWriterEffect : MonoBehaviour
                 }
                 //단어하나씩출력
                 currentText = _fullText[cnt].Substring(0, i + 1);
-                this.GetComponent<Text>().text = currentText;
+                text.text = currentText;
                 yield return new WaitForSeconds(typingDelay);
             }
-
-
+            
             //탈출시 모든 문자출력
             //Debug.Log("Typing 종료");
-            this.GetComponent<Text>().text = _fullText[cnt];
+            text.text = _fullText[cnt];
             yield return new WaitForSeconds(skipDelay);
 
             //스킵_지연후 종료
@@ -95,20 +109,3 @@ public class R_Quiz_TypeWriterEffect : MonoBehaviour
     }
 
 }
-
-
-    //// 퀴즈 내용 넘겨받기
-    //public void Write(string dialog, int cntOfText)
-    //{
-    //    if (fulltext == null)
-    //    {
-    //        fulltext = new string[cntOfText];
-    //        fulltext[dialog_cnt] = dialog;
-    //        ++dialog_cnt;
-    //    }
-    //    else
-    //    {
-    //        fulltext[dialog_cnt] = dialog;
-    //        ++dialog_cnt;
-    //    }
-    //}

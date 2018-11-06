@@ -8,7 +8,18 @@ public class R_Player_Raycasting : MonoBehaviour
     // Raycasting 거리 변수
     public float rayDistance = 5.0f;
 
-    bool isEvent = false;
+    // 레이어 마스크
+    int layerMask;
+
+    // 현재 UI가 켜져있는게 있는지 체크
+    bool isUIEvent = false;
+
+    private void Start()
+    {
+        // 레이어 등록 (레이어 EscapeRoom 추가해줘야함)
+        layerMask = 1 << LayerMask.NameToLayer("EscapeRoom");
+    }
+
 
     void Update()
     {
@@ -23,104 +34,59 @@ public class R_Player_Raycasting : MonoBehaviour
         RaycastHit hit;
 
         // 만약 카메라 화면에서 마우스 커서가 오브젝트와 충돌하면 실시간 무한 true 반환.
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, rayDistance, layerMask))
         {
-            // 마우스 커서에 물체가 Quiz 태그 && 클릭 이벤트가 발생하지 않았다면
-            if ((hit.transform.tag.Equals("Quiz") || hit.transform.tag.Equals("Quiz2"))
-                && R_GameManager.instance.quiz.transform.GetChild(1).gameObject.activeSelf == false && R_GameManager.instance.quiz2.transform.GetChild(1).gameObject.activeSelf == false)
-            {
-
-                // 사정거리 안이라면
-                if (hit.distance < rayDistance)
-                {
-                    // 메인 커서 이미지 감추기
-                    Cursor.visible = false;
-
-                    if (hit.transform.tag.Equals("Quiz"))
-                    {
-                        // 퀴즈 버튼 이미지 활성화
-                        R_GameManager.instance.quiz.transform.GetChild(0).gameObject.SetActive(true);
-
-                        // 퀴즈 버튼 이미지를 커서를 따라다니게 함.
-                        R_GameManager.instance.quiz.transform.GetChild(0).GetComponent<RectTransform>().position = mousePosition;
-                    }
-                    else
-                    {
-                        // 퀴즈 버튼 이미지 활성화
-                        R_GameManager.instance.quiz2.transform.GetChild(0).gameObject.SetActive(true);
-
-                        // 퀴즈 버튼 이미지를 커서를 따라다니게 함.
-                        R_GameManager.instance.quiz2.transform.GetChild(0).GetComponent<RectTransform>().position = mousePosition;
-                    }
-                }
-            }
-            // 퀴즈 오브젝트와 닿지 않았고 && Cursor가 꺼져있다면
-            else if ((hit.transform.tag.Equals("Quiz") == false && hit.transform.tag.Equals("Quiz2") == false) && Cursor.visible == false)
-            {
-                Cursor.visible = true;
-                if (hit.transform.tag.Equals("Quiz") == false)
-                {
-                    R_GameManager.instance.quiz.transform.GetChild(0).gameObject.SetActive(false);
-                }
-                if (hit.transform.tag.Equals("Quiz2") == false)
-                {
-                    R_GameManager.instance.quiz2.transform.GetChild(0).gameObject.SetActive(false);
-                }
-                if (hit.transform.tag.Equals("Light") == false)
-                {
-                    R_GameManager.instance.lightButton.SetActive(false);
-                }
-            }
-
+            // 태그가 Light이고 현재 다른 UI가 켜져있지 않으면
             if (hit.transform.tag.Equals("Light"))
             {
-                if (hit.distance < rayDistance)
-                {
-                    Cursor.visible = false;
-                    R_GameManager.instance.lightButton.SetActive(true);
-                    R_GameManager.instance.lightButton.GetComponent<RectTransform>().position = mousePosition;
-                }
-            }
+                // 마우스 커서 없애기
+                Cursor.visible = false;
+                // light 버튼 UI 활성화
+                R_GameManager.instance.lightButtonUI.SetActive(true);
 
-            // 자동문을 만났을때
-            if (hit.transform.tag.Equals("Door"))
-            {
-                if (hit.distance < rayDistance)
-                {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        hit.transform.GetComponent<R_Door_DoorMove>().MoveSignal();
-                    }
-                }
+                // light 버튼 UI 커서 따라다니기
+                R_GameManager.instance.SetLightButtonPos(mousePosition);
 
+                // UI 활성화
+                isUIEvent = true;
             }
 
             // Password를 만났을때
             if (hit.transform.tag.Equals("Password"))
             {
-                if (hit.distance < rayDistance)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        // keypad UI를 활성화 시킨다.
-                        R_GameManager.instance.keypadUI.gameObject.SetActive(true);
-                        // 플레이어의 움직임을 일시적으로 멈춘다
-                        GetComponent<R_Player_Movement>().SetMove(false);
-                        // 이벤트 발생여부 체크
-                        isEvent = true;
-                    }
+                    // keypad UI를 활성화 시킨다.
+                    R_GameManager.instance.keypadUI.gameObject.SetActive(true);
+                    // 플레이어의 움직임을 일시적으로 멈춘다
+                    GetComponent<R_Player_Movement>().SetMove(false);
+                    // 이벤트 발생여부 체크
+                    isUIEvent = true;
                 }
             }
         }
+        // 레이캐스팅 안되면
+        else
+        {
+            // 켜져 있다면 끄기
+            if (R_GameManager.instance.lightButtonUI.activeSelf)
+            {
+                R_GameManager.instance.lightButtonUI.SetActive(false);
+                isUIEvent = false;
+                Cursor.visible = true;
+            }
+
+        }
+
     }
 
-    public void SetIsEvent(bool isEvent)
+    public void SetUIEvent(bool isEvent)
     {
-        this.isEvent = isEvent;
+        this.isUIEvent = isEvent;
     }
 
-    public bool GetIsEvent()
+    public bool GetUIEvent()
     {
-        return isEvent;
+        return isUIEvent;
     }
 }

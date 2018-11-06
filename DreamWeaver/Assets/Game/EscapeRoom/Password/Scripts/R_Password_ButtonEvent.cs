@@ -18,6 +18,7 @@ public class R_Password_ButtonEvent : MonoBehaviour
     {
         if(gameObject.activeSelf)
         {
+            // ESC를 누르면
             if(Input.GetKeyDown(KeyCode.Escape))
             {
                 // 내용 지우기
@@ -26,8 +27,8 @@ public class R_Password_ButtonEvent : MonoBehaviour
                 // 플레이어 움직임 정상화
                 R_GameManager.instance.player.GetComponent<R_Player_Movement>().SetMove(true);
 
-                // 이벤트 제거
-                R_GameManager.instance.player.GetComponent<R_Player_Raycasting>().SetIsEvent(false);
+                // 레이캐스팅 UI이벤트 초기화
+                R_GameManager.instance.player.GetComponent<R_Player_Raycasting>().SetUIEvent(false);
 
                 // 오브젝트 제거
                 gameObject.SetActive(false);
@@ -62,7 +63,10 @@ public class R_Password_ButtonEvent : MonoBehaviour
             outputNum.text = "";
             // 패스워드 UI 비활성
             gameObject.SetActive(false);
+            // 플레이어 움직임 활성화
             R_GameManager.instance.player.GetComponent<R_Player_Movement>().SetMove(true);
+            // 플레이어 레이캐스팅 비활성화
+            R_GameManager.instance.player.GetComponent<R_Player_Raycasting>().SetUIEvent(false);
         }
         // 비밀번호가 정답과 틀리다면 초기화
         else

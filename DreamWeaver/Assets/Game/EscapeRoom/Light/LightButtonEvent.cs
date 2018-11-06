@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LightButton : MonoBehaviour
+public class LightButtonEvent : MonoBehaviour
 {
 
     string nextState = "OFF";
@@ -32,17 +32,5 @@ public class LightButton : MonoBehaviour
     public void ChangeString()
     {
         text.text = nextState;
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

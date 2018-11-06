@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114063925016759952}
   - component: {fileID: 114744542328310068}
   m_Layer: 5
-  m_Name: DialogEndButton
+  m_Name: CancelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 222527575196086784}
   - component: {fileID: 114563045405749688}
   m_Layer: 5
-  m_Name: Text
+  m_Name: QuizButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 224237041219111410}
   - component: {fileID: 222291410176834102}
   - component: {fileID: 114663502225469678}
-  - component: {fileID: 114441404741318998}
+  - component: {fileID: 114951451755998704}
   m_Layer: 5
   m_Name: DialogText
   m_TagString: Untagged
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 114633532148258414}
   - component: {fileID: 114824604091064080}
   m_Layer: 5
-  m_Name: ChangeCursor
+  m_Name: QuizButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,9 +107,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224272510161866240}
-  - component: {fileID: 114472494823213994}
+  - component: {fileID: 114186129422251586}
   m_Layer: 5
-  m_Name: Quiz
+  m_Name: QuizUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 222735646036249230}
   - component: {fileID: 114357391022976052}
   m_Layer: 5
-  m_Name: ButtonText
+  m_Name: Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 222946718105175642}
   - component: {fileID: 114401592248435028}
   m_Layer: 5
-  m_Name: ButtonText
+  m_Name: Cancel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 114051905197102770}
   - component: {fileID: 114722506523605976}
   m_Layer: 5
-  m_Name: DialogNextButton
+  m_Name: NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,6 +221,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114186129422251586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1629937246560304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94d49c89a84509d40bb012558a86dc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114357391022976052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -286,7 +297,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Exit
+  m_Text: Cancel
 --- !u!114 &114427694210601106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,34 +325,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114441404741318998
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1422402995241210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cb78b8a5f45db46b37603bb13ca45b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typingDelay: 0.1
-  skipDelay: 0.2
-  fulltext:
-  - "\uD034\uC988 \uB0B4\uC6A9\uC785\uB2C8\uB2E4"
-  - "\uB9C8\uC9C0\uB9C9 \uBB38\uC7A5\uC785\uB2C8\uB2E4"
-  dialog_cnt: 2
---- !u!114 &114472494823213994
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1629937246560304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe571307ed58974b93be0a2cd17cb51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114563045405749688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -431,7 +414,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
@@ -474,7 +457,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114441404741318998}
+      - m_Target: {fileID: 114951451755998704}
         m_MethodName: End_Typing
         m_Mode: 1
         m_Arguments:
@@ -526,7 +509,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114472494823213994}
+      - m_Target: {fileID: 114186129422251586}
         m_MethodName: EndEvent
         m_Mode: 1
         m_Arguments:
@@ -578,8 +561,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114472494823213994}
-        m_MethodName: Click
+      - m_Target: {fileID: 114186129422251586}
+        m_MethodName: QuizButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -587,9 +570,9 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 114441404741318998}
+      - m_Target: {fileID: 114951451755998704}
         m_MethodName: Get_Typing
         m_Mode: 1
         m_Arguments:
@@ -598,10 +581,23 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114951451755998704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422402995241210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b9758488b2d274c959e4a3ca6968ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typingDelay: 0.1
+  skipDelay: 0.2
 --- !u!222 &222173694775864260
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -674,8 +670,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 50}
+  m_AnchoredPosition: {x: 359, y: 243}
+  m_SizeDelta: {x: 85, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224237041219111410
 RectTransform:
@@ -707,7 +703,7 @@ RectTransform:
   m_Children:
   - {fileID: 224446439637024652}
   m_Father: {fileID: 224272510161866240}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -725,8 +721,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224080054645361566}
-  - {fileID: 224241402939648690}
   - {fileID: 224750417771341946}
+  - {fileID: 224241402939648690}
   - {fileID: 224596784313049574}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -821,7 +817,7 @@ RectTransform:
   m_Children:
   - {fileID: 224237041219111410}
   m_Father: {fileID: 224272510161866240}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

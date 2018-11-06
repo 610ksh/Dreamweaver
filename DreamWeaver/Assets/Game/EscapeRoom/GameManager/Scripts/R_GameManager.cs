@@ -12,11 +12,6 @@ public class R_GameManager : MonoBehaviour
     // KeyPad 이미지
     public GameObject keypadUI;
 
-    // Quiz 버튼
-    public GameObject quiz;
-
-    public GameObject quiz2;
-
     // Player
     public GameObject player;
 
@@ -24,7 +19,8 @@ public class R_GameManager : MonoBehaviour
     public GameObject mainLight;
 
     // 불 버튼
-    public GameObject lightButton;
+    public GameObject lightButtonUI;
+    RectTransform lightPos;
 
     // Fade In UI
     public GameObject fadeInUI;
@@ -42,6 +38,7 @@ public class R_GameManager : MonoBehaviour
     {
         fadeInUI.gameObject.SetActive(true);
         fadeInUI.transform.GetChild(0).GetComponent<FadeIn>().StartFadeAnim();
+        lightPos = lightButtonUI.GetComponent<RectTransform>();
     }
 
     void Update()
@@ -60,5 +57,11 @@ public class R_GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(2);
         }
+    }
+
+    // 불 버튼 위치 설정
+    public void SetLightButtonPos(Vector3 pos)
+    {
+        lightPos.position = pos;
     }
 }

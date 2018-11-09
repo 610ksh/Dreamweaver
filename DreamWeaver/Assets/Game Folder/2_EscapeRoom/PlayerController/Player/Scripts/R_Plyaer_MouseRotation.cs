@@ -20,11 +20,17 @@ public class R_Plyaer_MouseRotation : MonoBehaviour
     public float sensVertical = 3.0f;
 
     // X축 회전각 초기값 설정
-    float _rotationX = 0;
+    float _rotationX;
 
     // 상하 최고 최하 각도값
     public float minVert = -45.0f;
     public float maxVert = 45.0f;
+
+    private void Start()
+    {
+        // X축 회전 초기값 기록
+        _rotationX = transform.localEulerAngles.x;
+    }
 
     void Update()
     {
@@ -40,7 +46,6 @@ public class R_Plyaer_MouseRotation : MonoBehaviour
             // 상하 회전이라면 (Mouse Y)
             else if (axes == RotationAxis.MouseY)
             {
-                
                 _rotationX -= Input.GetAxis("Mouse Y") * sensVertical;
                 _rotationX = Mathf.Clamp(_rotationX, minVert, maxVert);
 

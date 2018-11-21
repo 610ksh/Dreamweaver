@@ -36,8 +36,8 @@ public class R_Player_Raycasting : MonoBehaviour
         // 만약 카메라 화면에서 마우스 커서가 오브젝트와 충돌하면 실시간 무한 true 반환.
         if (Physics.Raycast(ray, out hit, rayDistance, layerMask))
         {
-            // 태그가 Light이고 현재 다른 UI가 켜져있지 않으면
-            if (hit.transform.tag.Equals("Light"))
+            // Light 이름의 오브젝트를 만났을때
+            if (hit.transform.name.Equals("LightSwitch"))
             {
                 // 마우스 커서 없애기
                 Cursor.visible = false;
@@ -51,8 +51,8 @@ public class R_Player_Raycasting : MonoBehaviour
                 isUIEvent = true;
             }
 
-            // Password를 만났을때
-            if (hit.transform.tag.Equals("Password"))
+            // Password 이름의 오브젝트를 만났을때
+            if (hit.transform.name.Equals("Password"))
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -64,7 +64,30 @@ public class R_Player_Raycasting : MonoBehaviour
                     isUIEvent = true;
                 }
             }
+
+            // Item 태그를 만났을때
+            if(hit.transform.tag.Equals("Item"))
+            {
+                Debug.Log("아이템을 발견했다");
+                // 마우스 버튼 클릭하면
+                if(Input.GetMouseButtonDown(0))
+                {
+                    // 해당하는 아이템이 발동된다.
+                    hit.collider.GetComponent<E_Item>().AcquireItem();
+                }
+            }
+
+            // Box 이름을 만났을때
+            if(hit.transform.name.Equals("Box"))
+            {
+                Debug.Log("박스를 확인했다");
+                if(Input.GetMouseButtonDown(0))
+                {
+                    hit.collider.GetComponent<E_Item>().OpenItem();
+                }
+            }
         }
+
         // 레이캐스팅 안되면
         else
         {
@@ -75,9 +98,7 @@ public class R_Player_Raycasting : MonoBehaviour
                 isUIEvent = false;
                 Cursor.visible = true;
             }
-
         }
-
     }
 
     public void SetUIEvent(bool isEvent)

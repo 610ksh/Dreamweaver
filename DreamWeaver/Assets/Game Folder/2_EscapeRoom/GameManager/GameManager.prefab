@@ -51,6 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057d23e360323a74f874a65438b33b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keypad: {fileID: 0}
-  quiz: {fileID: 0}
+  keypadUI: {fileID: 0}
   player: {fileID: 0}
+  mainLight: {fileID: 0}
+  lightButtonUI: {fileID: 0}
+  fadeEffectUI: {fileID: 0}
+  messageUI: {fileID: 0}

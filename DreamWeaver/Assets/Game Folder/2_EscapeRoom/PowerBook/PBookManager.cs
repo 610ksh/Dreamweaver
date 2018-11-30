@@ -13,6 +13,7 @@ public class PBookManager : Singleton<PBookManager> {
     public void ClosePBookUI()
     {
         pBookUI.gameObject.SetActive(false);
+        Cam.gameObject.SetActive(false);
     }
 
     // 책 열면

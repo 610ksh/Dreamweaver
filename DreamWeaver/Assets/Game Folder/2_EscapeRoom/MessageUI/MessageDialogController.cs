@@ -56,6 +56,11 @@ public class MessageDialogController : MonoBehaviour {
         if (cnt >= dialog_cnt)
         {
             //text_exit = true;
+
+            // 플레이어 이동/회전 가능
+            R_GameManager.instance.PlayerMovement(true);
+            R_GameManager.instance.SetPlayerRotation(true);
+
             // 코루틴 중단
             StopCoroutine("ShowText");
             // MessageUI 비활성화

@@ -79,19 +79,20 @@ public class R_Player_Raycasting : MonoBehaviour
             }
 
             // Item 태그를 만났을때
-            if (hit.transform.name == "BoxKey")
+            if (hit.transform.tag == "Item")
             {
                 // 마우스 버튼 클릭하면
                 if (Input.GetMouseButtonDown(0))
                 {
                     Debug.Log("아이템을 발견했다");
                     // 해당하는 아이템이 발동된다.
-                    hit.collider.GetComponent<E_Item>().AcquireItem();
+                    if(hit.collider.GetComponent<E_Item>())
+                        hit.collider.GetComponent<E_Item>().AcquireItem();
                 }
             }
 
             // Box를 만났을때
-            if (hit.transform.tag == "Finish")
+            if (hit.transform.name == "Lock")
             {
                 Debug.Log("박스를 확인했다");
                 if (Input.GetMouseButtonDown(0))
@@ -107,16 +108,15 @@ public class R_Player_Raycasting : MonoBehaviour
             //Computer를 만났을 때
             if (hit.transform.name == "Computer")
             {
-                Debug.Log("컴퓨터 발견");
                 if (hit.distance < rayDistance)
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
-                        Debug.Log("컴퓨터 발견2");
                         //computer UI 활성화
                         R_GameManager.instance.computerUI.gameObject.SetActive(true);
                         // 플레이어의 움직임을 멈춤
-                        GetComponent<R_Player_Movement>().SetMove(false);
+                        //GetComponent<R_Player_Movement>().SetMove(false);
+                        //R_GameManager.instance.PlayerMovement(fals)
                         // 이벤트 발생 여부 체크
                         isUIEvent = true;
                     }

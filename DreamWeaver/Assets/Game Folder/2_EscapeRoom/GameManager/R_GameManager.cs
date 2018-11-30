@@ -14,7 +14,8 @@ public class R_GameManager : MonoBehaviour
 
     // Player
     public GameObject player;
-    R_Player_Movement playerMovement;
+    R_Player_Movement playerMovement; // 키보드 움직임 제한
+    bool isRotate = false; // 카메라 회전 제한
 
     // 메인 빛
     public GameObject mainLight;
@@ -23,12 +24,9 @@ public class R_GameManager : MonoBehaviour
     public GameObject lightButtonUI;
     RectTransform lightButtonPos;
 
-    //컴퓨터
-    public GameObject computerUI;
     // Fade Effect UI
     public GameObject fadeEffectUI;
-    // Fade Effect 현재 실행 여부 변수
-    bool isFade = false;
+    bool isFade = false; // Fade Effect 현재 실행 여부 변수
 
     // fadeIn 변수
     GameObject fadeIn;
@@ -36,35 +34,39 @@ public class R_GameManager : MonoBehaviour
     // MessageUI
     public GameObject messageUI;
 
+    // 컴퓨터 UI
+    public GameObject computerUI;
+
+    // Box iTween
+    public GameObject boxHead;
+
+    // 파티클
+    public GameObject particle;
+
     void Awake()
     {
         // 싱글톤
         instance = this;
         playerMovement = player.GetComponent<R_Player_Movement>();
-        playerMovement.SetMove(false);
+        PlayerMovement(false);
     }
 
     private void Start()
     {
+        //iTween.MoveTo(boxHead, iTween.Hash("Path", iTweenPath.GetPath("Path1"), "time", 10f));
+
         // FadeIn 캐싱
         fadeIn = fadeEffectUI.transform.GetChild(0).gameObject;
         // FadeIn 실행
         fadeIn.SetActive(true);
         fadeEffectUI.transform.GetChild(0).GetComponent<FadeEffect>().StartFade();
-        
+
         // 전등 버튼 UI 위치값 변수
         lightButtonPos = lightButtonUI.GetComponent<RectTransform>();
     }
 
     void Update()
     {
-        // fadeIn이 끝나면
-        if(!fadeIn.activeSelf)
-        {
-            // 플레이어 이동을 풀어준다.
-            playerMovement.SetMove(true);
-        }
-
         // 13m 밑으로 떨어지면 FadeOut 시작
         if (player.transform.position.y < -13f)
         {
@@ -97,4 +99,23 @@ public class R_GameManager : MonoBehaviour
         messageUI.GetComponent<MessageUIController>().StartDialog();
     }
 
+    public void PlayerMovement(bool isMove)
+    {
+        playerMovement.SetMove(isMove);
+    }
+
+    public bool GetPlayerRotation()
+    {
+        return isRotate;
+    }
+    public void SetPlayerRotation(bool isRotate)
+    {
+        this.isRotate = isRotate;
+    }
+
+    // 박스 itween
+    public void OpenLock()
+    {
+        iTween.MoveTo(boxHead, iTween.Hash("Path", iTweenPath.GetPath("Path1"), "time", 10f,"easyType","easelnCirc"));
+    }
 }

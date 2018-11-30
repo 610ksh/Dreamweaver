@@ -23,7 +23,7 @@ public class R_Plyaer_MouseRotation : MonoBehaviour
     float _rotationX;
 
     // 상하 최고 최하 각도값
-    public float minVert = -45.0f;
+    public float minVert = -60.0f;
     public float maxVert = 45.0f;
 
     private void Start()
@@ -32,29 +32,31 @@ public class R_Plyaer_MouseRotation : MonoBehaviour
         _rotationX = transform.localEulerAngles.x;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        // 마우스 오른쪽 버튼 클릭시
-        if (Input.GetMouseButton(1))
+        if (R_GameManager.instance.GetPlayerRotation())
         {
-            // 좌우 회전이라면 (Mouse X)
-            if (axes == RotationAxis.MouseX)
+            // 마우스 오른쪽 버튼 클릭시
+            if (Input.GetMouseButton(1))
             {
-                // 좌우 회전
-                transform.Rotate(0, Input.GetAxis("Mouse X") * sensHorizontal, 0);
-            }
-            // 상하 회전이라면 (Mouse Y)
-            else if (axes == RotationAxis.MouseY)
-            {
-                _rotationX -= Input.GetAxis("Mouse Y") * sensVertical;
-                _rotationX = Mathf.Clamp(_rotationX, minVert, maxVert);
+                // 좌우 회전이라면 (Mouse X)
+                if (axes == RotationAxis.MouseX)
+                {
+                    // 좌우 회전
+                    transform.Rotate(0, Input.GetAxis("Mouse X") * sensHorizontal, 0);
+                }
+                // 상하 회전이라면 (Mouse Y)
+                else if (axes == RotationAxis.MouseY)
+                {
+                    _rotationX -= Input.GetAxis("Mouse Y") * sensVertical;
+                    _rotationX = Mathf.Clamp(_rotationX, minVert, maxVert);
 
-                float rotationY = transform.localEulerAngles.y;
+                    float rotationY = transform.localEulerAngles.y;
 
-                transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
+                    transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
 
+                }
             }
         }
     }
-
 }

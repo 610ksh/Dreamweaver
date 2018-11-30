@@ -31,54 +31,56 @@ public class Room_PlayerQuizRaycasting : MonoBehaviour
             // Quiz Layer만 충돌검사
             if (Physics.Raycast(ray, out hit, rayDistance, layerMask))
             {
-                // 버튼이 활성화 되어있다면
-                if (Room_QuizManager.Instance.IsQuizUI())
+                if(hit.collider.tag=="Item")
                 {
-                    Debug.Log("커서를 끕니다");
-                    //메인 커서를 끈다
-                    Cursor.visible = false;
-
-                    //충돌한 퀴즈 오브젝트의 이름과 현재 활성화된 버튼의 퀴즈 오브젝트 이름이 같은지 체크
-                    if (hit.collider.name == Room_QuizManager.Instance.GetQuizName())
+                    // 버튼이 활성화 되어있다면
+                    if (Room_QuizManager.Instance.IsQuizUI())
                     {
-                        // 커서에 퀴즈 이미지 버튼을 따라다니게 한다
-                        Debug.Log("동일한 퀴즈 버튼이 켜져있으므로 따라다닙니다.");
+                        Debug.Log("커서를 끕니다");
+                        //메인 커서를 끈다
+                        Cursor.visible = false;
+
+                        //충돌한 퀴즈 오브젝트의 이름과 현재 활성화된 버튼의 퀴즈 오브젝트 이름이 같은지 체크
+                        if (hit.collider.name == Room_QuizManager.Instance.GetQuizName())
+                        {
+                            // 커서에 퀴즈 이미지 버튼을 따라다니게 한다
+                            Debug.Log("동일한 퀴즈 버튼이 켜져있으므로 따라다닙니다.");
+                            Room_QuizManager.Instance.SetButtonPosition(mousePosition);
+                        }
+                        // 충돌한 오브젝트가 다르다면 => 붙어있는 다른 퀴즈와 충돌했다면
+                        else
+                        {
+                            // 기존 버튼을 종료하고 리턴.
+                            Debug.Log("붙어있는 퀴즈! 기존 버튼을 종료합니다.");
+                            Room_QuizManager.Instance.SetQuizButtonState(false);
+                        }
+                    }
+                    // 버튼이 비활성화 상태라면
+                    else
+                    {
+                        Debug.Log("버튼이 꺼져있네요. 새로운 퀴즈 버튼을 생성합니다.");
+
+                        // 부딪힌 물체가 갖고 있는 스크립트를 가져온다(물체가 퀴즈내용을 가지고 있음)
+                        Room_QuizObject script = hit.collider.GetComponent<Room_QuizObject>();
+
+                        // QuizObject 스크립트를 게임매니저에게 넘겨줌
+                        if (script)
+                        {
+                            Room_QuizManager.Instance.SetQuizScript(script);
+                        }
+                        // 예외처리
+                        else
+                        {
+                            Debug.Log("error : QuizObject 스크립트를 인식하지 못했습니다");
+                        }
+
+                        // 마우스 위치에 이미지를 생성
                         Room_QuizManager.Instance.SetButtonPosition(mousePosition);
+                        // 퀴즈 버튼 이미지를 생성한다.
+                        Room_QuizManager.Instance.SetQuizButtonState(true);
+                        // 퀴즈 버튼의 이름을 설정한다.
+                        Room_QuizManager.Instance.SetQuizName(hit.collider.name);
                     }
-                    // 충돌한 오브젝트가 다르다면 => 붙어있는 다른 퀴즈와 충돌했다면
-                    else
-                    {
-                        // 기존 버튼을 종료하고 리턴.
-                        Debug.Log("붙어있는 퀴즈! 기존 버튼을 종료합니다.");
-                        Room_QuizManager.Instance.SetQuizButtonState(false);
-                    }
-                }
-                // 버튼이 비활성화 상태라면
-                else
-                {
-                    Debug.Log("버튼이 꺼져있네요. 새로운 퀴즈 버튼을 생성합니다.");
-
-                    // 부딪힌 물체가 갖고 있는 스크립트를 가져온다(물체가 퀴즈내용을 가지고 있음)
-                    Room_QuizObject script = hit.collider.GetComponent<Room_QuizObject>();
-
-                    // QuizObject 스크립트를 게임매니저에게 넘겨줌
-                    if (script)
-                    {
-                        Room_QuizManager.Instance.SetQuizScript(script);
-                    }
-                    // 예외처리
-                    else
-                    {
-                        Debug.Log("error : QuizObject 스크립트를 인식하지 못했습니다");
-                    }
-
-                    // 마우스 위치에 이미지를 생성
-                    Room_QuizManager.Instance.SetButtonPosition(mousePosition);
-                    // 퀴즈 버튼 이미지를 생성한다.
-                    Room_QuizManager.Instance.SetQuizButtonState(true);
-                    // 퀴즈 버튼의 이름을 설정한다.
-                    Room_QuizManager.Instance.SetQuizName(hit.collider.name);
-
                 }
             }
             // 퀴즈가 아닌 곳에 레이캐스팅 됐을때

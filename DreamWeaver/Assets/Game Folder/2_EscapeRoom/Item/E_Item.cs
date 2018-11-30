@@ -40,6 +40,8 @@ public class E_Item : MonoBehaviour
             {
                 // 자물쇠 없애주기
                 gameObject.SetActive(false);
+                // 박스뚜껑 iTween 적용
+                R_GameManager.instance.OpenLock();
             }
         }
     }

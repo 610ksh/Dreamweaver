@@ -21,7 +21,7 @@ public class R_Player_Raycasting : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         // 메인카메라의 화면에서 마우스 커서 위치값을 현재위치 기준으로 Ray값으로 변환 (현재 카메라 위치 ~ 마우스 커서 위치)
         Vector3 mousePosition = Input.mousePosition;
@@ -36,17 +36,6 @@ public class R_Player_Raycasting : MonoBehaviour
         // 만약 카메라 화면에서 마우스 커서가 오브젝트와 충돌하면 실시간 무한 true 반환.
         if (Physics.Raycast(ray, out hit, rayDistance, layerMask))
         {
-            // PowerBook 에셋을 만나면
-            if (hit.transform.name == "Book")
-            {
-                // 버튼을 클릭하면
-                if (Input.GetMouseButtonDown(0))
-                {
-                    // UI 켜기
-                    PBookManager.Instance.pBookUI.gameObject.SetActive(true);
-                    PBookManager.Instance.pBookUI.OpenBook();
-                }
-            }
 
             // Light 이름의 오브젝트를 만났을때
             if (hit.transform.name.Equals("LightSwitch"))
@@ -61,6 +50,18 @@ public class R_Player_Raycasting : MonoBehaviour
 
                 // UI 활성화
                 isUIEvent = true;
+            }
+
+            // PowerBook 에셋을 만나면
+            if (hit.transform.name == "Book")
+            {
+                // 버튼을 클릭하면
+                if (Input.GetMouseButtonDown(0))
+                {
+                    // UI 켜기
+                    PBookManager.Instance.pBookUI.gameObject.SetActive(true);
+                    PBookManager.Instance.pBookUI.OpenBook();
+                }
             }
 
             // Password 이름의 오브젝트를 만났을때
@@ -80,23 +81,47 @@ public class R_Player_Raycasting : MonoBehaviour
             // Item 태그를 만났을때
             if (hit.transform.name == "BoxKey")
             {
-                Debug.Log("아이템을 발견했다");
                 // 마우스 버튼 클릭하면
                 if (Input.GetMouseButtonDown(0))
                 {
+                    Debug.Log("아이템을 발견했다");
                     // 해당하는 아이템이 발동된다.
                     hit.collider.GetComponent<E_Item>().AcquireItem();
                 }
             }
 
-            // Box 이름을 만났을때
-            if (hit.transform.name.Equals("Box"))
+            // Box를 만났을때
+            if (hit.transform.tag == "Finish")
             {
                 Debug.Log("박스를 확인했다");
                 if (Input.GetMouseButtonDown(0))
                 {
-                    hit.collider.GetComponent<E_Item>().OpenItem();
+                    if (hit.collider.GetComponent<E_Item>())
+                    {
+                        Debug.Log("박스를 확인했다2");
+                        hit.collider.GetComponent<E_Item>().OpenItem();
+                    }
                 }
+            }
+
+            //Computer를 만났을 때
+            if (hit.transform.name == "Computer")
+            {
+                Debug.Log("컴퓨터 발견");
+                if (hit.distance < rayDistance)
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        Debug.Log("컴퓨터 발견2");
+                        //computer UI 활성화
+                        R_GameManager.instance.computerUI.gameObject.SetActive(true);
+                        // 플레이어의 움직임을 멈춤
+                        GetComponent<R_Player_Movement>().SetMove(false);
+                        // 이벤트 발생 여부 체크
+                        isUIEvent = true;
+                    }
+                }
+
             }
         }
 

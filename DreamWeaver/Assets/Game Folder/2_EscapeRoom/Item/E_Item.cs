@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class E_Item : MonoBehaviour
 {
-    // item 이름
+    // item 이름(Key)
     string itemName;
 
     // 상자 아이템의 이름
@@ -17,7 +17,7 @@ public class E_Item : MonoBehaviour
 
     void Start()
     {
-        // 현재 오브젝트 이름을 변수에 넣음
+        // 현재 오브젝트(Key) 이름을 변수에 넣음
         itemName = name;
     }
     
@@ -38,7 +38,8 @@ public class E_Item : MonoBehaviour
         {
             if (item == keyName[0])
             {
-                Debug.Log("자물쇠를 열었습니다");
+                // 자물쇠 없애주기
+                gameObject.SetActive(false);
             }
         }
     }

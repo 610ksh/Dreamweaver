@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Room_PlayerQuizRaycasting : MonoBehaviour
 {
-
     public float rayDistance;
     int layerMask;
 

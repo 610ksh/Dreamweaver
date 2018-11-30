@@ -23,6 +23,8 @@ public class R_GameManager : MonoBehaviour
     public GameObject lightButtonUI;
     RectTransform lightButtonPos;
 
+    //컴퓨터
+    public GameObject computerUI;
     // Fade Effect UI
     public GameObject fadeEffectUI;
     // Fade Effect 현재 실행 여부 변수

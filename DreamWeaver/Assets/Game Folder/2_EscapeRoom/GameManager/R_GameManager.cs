@@ -29,7 +29,7 @@ public class R_GameManager : MonoBehaviour
     bool isFade = false; // Fade Effect 현재 실행 여부 변수
 
     // fadeIn 변수
-    GameObject fadeIn;
+    Transform fade;
 
     // MessageUI
     public GameObject messageUI;
@@ -56,20 +56,32 @@ public class R_GameManager : MonoBehaviour
         //iTween.MoveTo(boxHead, iTween.Hash("Path", iTweenPath.GetPath("Path1"), "time", 10f));
 
         // FadeIn 캐싱
-        fadeIn = fadeEffectUI.transform.GetChild(0).gameObject;
+        fade = fadeEffectUI.transform.GetChild(0);
         // FadeIn 실행
-        fadeIn.SetActive(true);
-        fadeEffectUI.transform.GetChild(0).GetComponent<FadeEffect>().StartFade();
-
+        fade.gameObject.SetActive(true);
+        fade.GetComponent<FadeEffect>().StartFade();
+        //fadeEffectUI.transform.GetChild(0).gameObject.SetActive(true);
+        //fadeEffectUI.transform.GetChild(1).GetComponent<FadeEffect>().StartFade();
         // 전등 버튼 UI 위치값 변수
         lightButtonPos = lightButtonUI.GetComponent<RectTransform>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        //fadeIn.activeSelf == false
+        if (!isFade && fadeEffectUI.transform.GetChild(1).gameObject.activeSelf==false)
+        {
+            isFade = true;
+            //fadeEffectUI.transform.GetChild(1).gameObject.SetActive(true);
+            //fadeEffectUI.transform.GetChild(1).GetComponent<FadeEffect>().StartFade();
+            fade.gameObject.SetActive(true);
+            fade.GetComponent<FadeEffect>().StartFade();
+        }
+
         // 13m 밑으로 떨어지면 FadeOut 시작
         if (player.transform.position.y < -13f)
         {
+            // Fade Effect가 실행되고 있지 않다면
             if (!isFade)
             {
                 isFade = true;
@@ -116,6 +128,6 @@ public class R_GameManager : MonoBehaviour
     // 박스 itween
     public void OpenLock()
     {
-        iTween.MoveTo(boxHead, iTween.Hash("Path", iTweenPath.GetPath("Path1"), "time", 10f,"easyType","easelnCirc"));
+        iTween.MoveTo(boxHead, iTween.Hash("Path", iTweenPath.GetPath("Path1"), "time", 10f, "easyType", "easelnCirc"));
     }
 }

@@ -21,12 +21,27 @@ public class FadeEffect : MonoBehaviour
     }
 
     // 열거형을 밖으로 뽑아내서 할당하고 싶을때
-    public Effect fadeEffect;
+    Effect fadeEffect;
+
+    //public void SetFadeEffect(int Effect)
+    //{
+    //    // 1이면 Fade In 밝아짐
+    //    if (Effect == 1)
+    //    {
+    //        fadeEffect = FadeEffect.Effect.FadeIn;
+    //    }
+    //    // 1이면 Fade Out 어두워짐
+    //    else
+    //    {
+    //        fadeEffect = FadeEffect.Effect.FadeOut;
+    //    }
+    //}
 
     // 시작하기전에 캐싱
     void Awake()
     {
         fadeImage = GetComponent<Image>();
+        fadeEffect = Effect.FadeIn;
     }
 
     public void StartFade()
@@ -43,6 +58,9 @@ public class FadeEffect : MonoBehaviour
     {
         // 플레이 상태변수 true
         isPlaying = true;
+
+        // 초기 이미지 칼라값 변수
+        //Color initialColor = fadeImage.color;
 
         // 현재 이미지 칼라값을 변수로 저장
         Color color = fadeImage.color;
@@ -67,7 +85,7 @@ public class FadeEffect : MonoBehaviour
                 // 알파값이 0.5보다 작아지면 시작한다.
                 if (color.a < 0.5f)
                 {
-                    if(!isStartDialog)
+                    if (!isStartDialog)
                     {
                         R_GameManager.instance.StartDialog();
                         isStartDialog = true;
@@ -75,7 +93,9 @@ public class FadeEffect : MonoBehaviour
                 }
                 yield return null;
             }
+            this.fadeEffect = Effect.FadeOut;
         }
+
         // FadeOut 선택(투명 -> 검정)
         else if (fadeEffect == Effect.FadeOut)
         {
@@ -91,6 +111,7 @@ public class FadeEffect : MonoBehaviour
                 fadeImage.color = color;
                 yield return null;
             }
+            this.fadeEffect = Effect.FadeIn;
         }
         // 예외처리
         else
@@ -103,6 +124,9 @@ public class FadeEffect : MonoBehaviour
         isPlaying = false;
 
         // 오브젝트 끄기
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+
+        // 초기 알파값으로 다시 조정
+        //fadeImage.color = initialColor;
     }
 }

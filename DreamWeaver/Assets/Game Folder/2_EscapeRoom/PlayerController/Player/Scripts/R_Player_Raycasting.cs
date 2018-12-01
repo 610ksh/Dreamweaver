@@ -121,7 +121,16 @@ public class R_Player_Raycasting : MonoBehaviour
                         isUIEvent = true;
                     }
                 }
+            }
 
+            //
+            if(hit.transform.name == "Test_Collider")
+            {
+                // 버튼을 누르면
+                if(Input.GetMouseButtonDown(0))
+                {
+
+                }
             }
         }
 

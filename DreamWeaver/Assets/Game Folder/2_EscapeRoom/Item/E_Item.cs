@@ -20,7 +20,12 @@ public class E_Item : MonoBehaviour
         // 현재 오브젝트(Key) 이름을 변수에 넣음
         itemName = name;
     }
-    
+    private void Update()
+    {
+        //if (E_ItemManager.Instance.itemList) 
+            
+    }
+
     // 아이템을 습득하면 발동하는 함수
     public void AcquireItem()
     {

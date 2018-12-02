@@ -13,7 +13,7 @@ public class E_ItemManager : Singleton<E_ItemManager> {
 	}
 	
 	void Update () {
-
+        
 	}
 
     // 잘 들어가는지 테스트용
@@ -27,5 +27,22 @@ public class E_ItemManager : Singleton<E_ItemManager> {
             }
             yield return new WaitForSeconds(2f);
         }
+    }
+
+    public bool CheckItem()
+    {
+        int count = 0;
+        foreach (var item in itemList)
+        {
+            if(item=="Keyboard"||item=="Mouse"||item=="MousePad")
+            {
+                count++;
+            }
+        }
+
+        if (count == 3)
+            return true;
+        else
+            return false;
     }
 }

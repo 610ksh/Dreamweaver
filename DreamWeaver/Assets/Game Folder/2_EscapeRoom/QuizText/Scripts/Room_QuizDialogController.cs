@@ -12,7 +12,7 @@ public class Room_QuizDialogController : MonoBehaviour
 
 
     // 전체 대화창의 내용 (문자배열)
-    string[] fulltext;
+    string fulltext;
 
     // 전체 대화창의 개수
     int dialog_cnt;
@@ -52,7 +52,7 @@ public class Room_QuizDialogController : MonoBehaviour
         StartCoroutine(ShowText(fulltext));
     }
 
-    IEnumerator ShowText(string[] _fullText)
+    IEnumerator ShowText(string _fullText)
     {
         //모든텍스트 종료
         if (cnt >= dialog_cnt)
@@ -66,7 +66,7 @@ public class Room_QuizDialogController : MonoBehaviour
             //기존문구clear
             currentText = "";
             //타이핑 시작
-            for (int i = 0; i < _fullText[cnt].Length; i++)
+            for (int i = 0; i < _fullText.Length; i++)
             {
                 //타이핑중도탈출
                 if (text_cut == true)
@@ -74,14 +74,14 @@ public class Room_QuizDialogController : MonoBehaviour
                     break;
                 }
                 //단어하나씩출력
-                currentText = _fullText[cnt].Substring(0, i + 1);
+                currentText = _fullText.Substring(0, i + 1);
                 text.text = currentText;
                 yield return new WaitForSeconds(typingDelay);
             }
             
             //탈출시 모든 문자출력
             //Debug.Log("Typing 종료");
-            text.text = _fullText[cnt];
+            text.text = _fullText;
             yield return new WaitForSeconds(skipDelay);
 
             //스킵_지연후 종료

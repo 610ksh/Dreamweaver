@@ -36,6 +36,8 @@ public class R_GameManager : MonoBehaviour
 
     // 컴퓨터 UI
     public GameObject computerUI;
+    public GameObject computerSet; // 컴퓨터 도구
+    public GameObject computerScreen;
 
     // Box iTween
     public GameObject boxHead;
@@ -55,43 +57,32 @@ public class R_GameManager : MonoBehaviour
     {
         //iTween.MoveTo(boxHead, iTween.Hash("Path", iTweenPath.GetPath("Path1"), "time", 10f));
 
-        // FadeIn 캐싱
+        // Fade 캐싱
         fade = fadeEffectUI.transform.GetChild(0);
-        // FadeIn 실행
+
+        // Fade 실행
         fade.gameObject.SetActive(true);
         fade.GetComponent<FadeEffect>().StartFade();
-        //fadeEffectUI.transform.GetChild(0).gameObject.SetActive(true);
-        //fadeEffectUI.transform.GetChild(1).GetComponent<FadeEffect>().StartFade();
+
         // 전등 버튼 UI 위치값 변수
         lightButtonPos = lightButtonUI.GetComponent<RectTransform>();
     }
 
     void FixedUpdate()
     {
-        //fadeIn.activeSelf == false
-        if (!isFade && fadeEffectUI.transform.GetChild(1).gameObject.activeSelf==false)
-        {
-            isFade = true;
-            //fadeEffectUI.transform.GetChild(1).gameObject.SetActive(true);
-            //fadeEffectUI.transform.GetChild(1).GetComponent<FadeEffect>().StartFade();
-            fade.gameObject.SetActive(true);
-            fade.GetComponent<FadeEffect>().StartFade();
-        }
+        //if(Input.GetMouseButtonDown(0))
+        //{
+        //    fade.GetComponent<FadeEffect>().StartFade();
+        //}
 
         // 13m 밑으로 떨어지면 FadeOut 시작
         if (player.transform.position.y < -13f)
         {
-            // Fade Effect가 실행되고 있지 않다면
-            if (!isFade)
-            {
-                isFade = true;
-                fadeEffectUI.transform.GetChild(1).gameObject.SetActive(true);
-                fadeEffectUI.transform.GetChild(1).GetComponent<FadeEffect>().StartFade();
-            }
+            fade.GetComponent<FadeEffect>().StartFade();
         }
 
         // 80m 밑으로 떨어지면 플랫포머로
-        if (player.transform.position.y < -80f)
+        if (player.transform.position.y < -40f)
         {
             SceneManager.LoadScene(2);
         }

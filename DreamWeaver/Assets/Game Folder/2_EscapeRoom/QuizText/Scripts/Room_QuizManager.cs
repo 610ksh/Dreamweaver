@@ -107,7 +107,7 @@ public class Room_QuizManager : Singleton<Room_QuizManager>
     }
 
     // QuizObject 퀴즈내용 string배열 받아오기
-    public string[] GetDialog()
+    public string GetDialog()
     {
         return quizObject.quizDialog;
     }

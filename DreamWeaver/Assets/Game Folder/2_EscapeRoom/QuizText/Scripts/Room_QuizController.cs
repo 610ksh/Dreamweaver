@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class Room_QuizController : MonoBehaviour {
 
     // Quiz UI 자식 버튼 4개 배열화
-    Transform[] buttonUI = new Transform[4];
-
+    Transform[] buttonUI = new Transform[3];
 
     private void Start()
     {
@@ -17,11 +16,6 @@ public class Room_QuizController : MonoBehaviour {
         {
             buttonUI[i] = transform.GetChild(i);
         }
-    }
-
-    private void Update()
-    {
-
     }
 
     public void QuizButtonClick()
@@ -45,7 +39,7 @@ public class Room_QuizController : MonoBehaviour {
     {
         buttonUI[1].gameObject.SetActive(isQuizDialog);
         buttonUI[2].gameObject.SetActive(isQuizDialog);
-        buttonUI[3].gameObject.SetActive(isQuizDialog);
+        //buttonUI[3].gameObject.SetActive(isQuizDialog);
     }
     
     // Event가 종료되면

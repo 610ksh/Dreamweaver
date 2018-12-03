@@ -19,8 +19,15 @@ public class R_Player_Movement : MonoBehaviour
         {
             //좌우 회전
             transform.Rotate(Vector3.up * Input.GetAxis("Horizontal") * rotSpeed);
-
-            transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime);
+            if(Input.GetAxis("Vertical")!=0)
+            {
+                transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime);
+                //GetComponent<Animator>().SetBool("Run", true);
+            }
+            else
+            {
+                //GetComponent<Animator>().SetBool("Run", false);
+            }
 
             //점프
             if (Input.GetButtonDown("Jump") && transform.position.y < 1.1f)

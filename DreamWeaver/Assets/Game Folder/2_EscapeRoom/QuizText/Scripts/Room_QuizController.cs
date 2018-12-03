@@ -20,6 +20,7 @@ public class Room_QuizController : MonoBehaviour {
 
     public void QuizButtonClick()
     {
+        Room_QuizManager.Instance.SetRaycasting(false);
         // 퀴즈 버튼(1) 비활성화
         SetQuizButton(false);
         // 버튼 2,3,4 활성화

@@ -22,7 +22,6 @@ public class R_Player_Raycasting : MonoBehaviour
         layerMask = 1 << LayerMask.NameToLayer("EscapeRoom");
     }
 
-
     void FixedUpdate()
     {
         // 메인카메라의 화면에서 마우스 커서 위치값을 현재위치 기준으로 Ray값으로 변환 (현재 카메라 위치 ~ 마우스 커서 위치)
@@ -38,7 +37,6 @@ public class R_Player_Raycasting : MonoBehaviour
         // 만약 카메라 화면에서 마우스 커서가 오브젝트와 충돌하면 실시간 무한 true 반환.
         if (Physics.Raycast(ray, out hit, rayDistance, layerMask))
         {
-
             // Light 이름의 오브젝트를 만났을때
             if (hit.transform.name.Equals("LightSwitch"))
             {

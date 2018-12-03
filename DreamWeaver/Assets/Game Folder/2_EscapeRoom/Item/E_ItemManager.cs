@@ -7,14 +7,20 @@ public class E_ItemManager : Singleton<E_ItemManager> {
     // C# 벡터는 리스트로 구현되어있다.
     public List<string> itemList = new List<string>();
 
+    public GameObject Lock;
+
 	void Start () {
         // 디버깅용 코루틴
         StartCoroutine(Temp());
 	}
 	
 	void Update () {
-        
-	}
+
+        if (itemList.Exists(x => x == "BoxKey"))
+        {
+            Lock.SetActive(true);
+        }
+    }
 
     // 잘 들어가는지 테스트용
     IEnumerator Temp()

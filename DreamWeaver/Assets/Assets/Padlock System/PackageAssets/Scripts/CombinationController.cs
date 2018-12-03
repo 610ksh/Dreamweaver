@@ -41,7 +41,7 @@ public class CombinationController : MonoBehaviour
     void OnEnable()
     {
         //FPSController stops the player moving, can be replaced if you're using your own controller
-        player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
+        //player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
 
         mainCamera.transform.localEulerAngles = new Vector3(0, 0, 0);
         HideCursor();
@@ -56,7 +56,7 @@ public class CombinationController : MonoBehaviour
     void Disable()
     {
         //FPSController enabled allows the player to move again, can be replaced if you're using your own controller
-        player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
+        //player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
 
         ShowCursor();
         mainCamera.GetComponent<RaycastManager_Padlock>().enabled = true;
@@ -72,7 +72,7 @@ public class CombinationController : MonoBehaviour
         interactableLock.SetActive(false);
 
         //FPSController enabled allows the player to move again, can be replaced if you're using your own controller
-        player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
+        //player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
 
         mainCamera.GetComponent<RaycastManager_Padlock>().enabled = true;
         ShowCursor();
